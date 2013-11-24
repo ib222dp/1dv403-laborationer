@@ -2,28 +2,31 @@
 
 window.onload = function(){
 	
-	//Initiering av variabler, slumpar tal mellan 1 och 100
+	 //Initiering av variabler, slumpar tal mellan 1 och 100
     	var count = 0;
     	var secret = Math.floor(Math.random() * 101);
 
 
-    var guess = function (number) {
+    	var guess = function (number) {
         //Räknar upp variabeln count med 1
         count = count += 1;
 
-        console.log("Det hemliga talet: " + secret); // Du når den yttre variabeln secret inifrån funktionen.
+        console.log("Det hemliga talet: " + secret); // Du når den yttre variabeln secret innifrån funktionen.
         console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 
-        //If-satser som returnerar en array vars värden varierar beroende på hur det inmatade talet stämmer överens med det hemliga talet
-        if (number === secret) {
-            return [true, "Det hemliga talet var " + secret + " och du behövde " + count + "gissningar för att hitta det."];
-        } if (number < 1 || number > 100) {
+        //Omvandlar variabeln number till typen Int
+        var number2 = parseInt(number);
+
+        // If-satser som returnerar array vars värden varierar beroende på hur det inmatade talet stämmer överens med det hemliga talet
+        if (number2 === secret) {
+            return [true, "Det hemliga talet var " + secret + " och du behövde " + count + " gissningar för att hitta det."];
+        } if (number2 < 1 || number > 100) {
             return [false, "Talet är utanför intervallet 1 - 100."];
-        } if(isNaN(number)){
+        } if (isNaN(number2)) {
             return [false, "Mata in ett tal med siffror."];
-        }if (number < secret) {
+        } if (number2 < secret) {
             return [false, "Det hemliga talet är högre!"];
-        } if (number > secret) {
+        } if (number2 > secret) {
             return [false, "Det hemliga talet är lägre!"];
         }
     };
