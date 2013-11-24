@@ -3,7 +3,7 @@
 var makePerson = function (persArr) {
 
     //Deklaration av variabler
-    var result = { "minAge": 0, "maxAge": 100, "averageAge": 50, "names": ["J", "M"] };
+    var result = { };
     var i, j, k;
 
     //Math-max och Math-min funktioner (http://www.devcurry.com/2011/10/javascript-max-min-array.html)
