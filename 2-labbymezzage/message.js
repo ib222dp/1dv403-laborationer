@@ -1,6 +1,7 @@
 //Konstruktor
 function Message(message, date) {
 
+    //Getters och setters
     this.getText = function () {
         return message;
     };
@@ -39,22 +40,16 @@ function Message(message, date) {
     };
 
     Message.prototype.getHTMLText = function () {
-
         var message = this.getText();
         return message.replace(/[\n\r]/g, "<br />");
-    };
+};
 
     //Metod som skriver ut tiden för meddelandet (http://stackoverflow.com/questions/1643320/get-month-name-from-date-using-javascript)
     Message.prototype.getDateText = function () {
-
         var day = this.getDate().getDate();
-
         var monthArray = ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"];
-
         var month = monthArray[this.getDate().getMonth()];
-
         var year = this.getDate().getFullYear();
-
         return "Inlägget skapades den " + day + " " + month + " " + year + " " + " klockan " + this.getDate().toLocaleTimeString();
     };
 };
