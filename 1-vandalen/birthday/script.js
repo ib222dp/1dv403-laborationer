@@ -11,7 +11,7 @@ window.onload = function(){
         }
 
         //Skapande av födelsedatumsobjekt och dagensdatum-objekt
-        var birthDay = new Date(date);
+        var birthDay = new Date(date + "T23:59:59");
         var now = new Date();
         birthDay.setFullYear(now.getFullYear());
 
