@@ -3,39 +3,29 @@ var MessageBoard = {
 
     messages: [],
 
-
-
     init: function (e) {
 
         e = e || event;
 
-        //Initiering av variabler
-        var submit = document.querySelector("#submitbutton input");
+        var submit = document.querySelector("#submitbutton a");
         var p = document.querySelector("#value");
         var input = document.querySelector("#textarea");
-        var counter = 0;
 
         //Skapande av counter node
-        var counterDiv = document.querySelector("#counter");
-        var cP = document.createElement("p");
-        counterDiv.appendChild(cP);
-        var counterText1 = document.createTextNode("Antal meddelanden: " + counter);
-        cP.appendChild(counterText1);
+        var counterP = document.querySelector("#counter p");
+        var counterText1 = document.createTextNode("Antal meddelanden: " + MessageBoard.messages.length);
+        counterP.appendChild(counterText1);
 
         //Händelse-hanterare kopplad till Skicka-knappen
         submit.addEventListener("click", function () {
-
             var message = MessageBoard.addMessage(input.value);
-
         }, false);
 
         //Händelsehanterare kopplad till Enter-knappen
         input.onkeypress = function (e) {
-
             if (e.keyCode === 13 && !e.shiftKey) {
-
                 var message = MessageBoard.addMessage(input.value);
-            }
+            } 
         };
     },
 
@@ -44,12 +34,19 @@ var MessageBoard = {
 
         var messageID = new Message(message);
         var date = new Date();
-        var messages = MessageBoard.messages;
         var i;
 
         messageID.setDate(date);
+        MessageBoard.messages.push(messageID);
 
-        messages.push(messageID);
+        //Borttagande och återskapande av counter node
+        var counterDiv = document.querySelector("#counter");
+        var counterP = document.querySelector("#counter p");
+        counterDiv.removeChild(counterP);
+        var newP = document.createElement("p");
+        var counterText2 = document.createTextNode("Antal meddelanden: " + MessageBoard.messages.length);
+        counterDiv.appendChild(newP);
+        newP.appendChild(counterText2);
 
         MessageBoard.renderMessage(messageID);
     },
@@ -105,7 +102,6 @@ var MessageBoard = {
         //Funktion för att ta bort meddelande, kopplad till bilden på soptunnan
         deleteLink.onclick = function () {
             if (window.confirm("Vill du verkligen radera meddelandet?")) {
-
                 var messageID2 = MessageBoard.messages.indexOf(messageID);
                 MessageBoard.removeMessage(messageID2);
             }
@@ -118,25 +114,30 @@ var MessageBoard = {
         newP.appendChild(timeStamp);
     },
 
-
     //Funktion för att ta bort meddelande
     removeMessage: function (messageID2) {
-
-        var messages = MessageBoard.messages.splice(MessageBoard.messages[messageID2], 1);
-
-        MessageBoard.renderMessages(messages);
-
+        MessageBoard.messages.splice(messageID2, 1);
+        MessageBoard.renderMessages();
     },
 
     //Funktion för att ta bort alla meddelanden och sedan skriva ut dem igen
-    renderMessages: function (messages) {
-    var i;
+    renderMessages: function () {
+        var i;
 
-    document.getElementById("messagearea").innerHTML = "";
+        document.getElementById("messagearea").innerHTML = "";
 
-    for (i = 0; i < messages.length; i += 1) {
-    MessageBoard.renderMessage(messages[i]);
-    }
+        //Borttagande och återskapande av counter node
+        var counterDiv = document.querySelector("#counter");
+        var counterP = document.querySelector("#counter p");
+        counterDiv.removeChild(counterP);
+        var newP2 = document.createElement("p");
+        var counterText3 = document.createTextNode("Antal meddelanden: " + MessageBoard.messages.length);
+        counterDiv.appendChild(newP2);
+        newP2.appendChild(counterText3);
+
+        for (i = 0; i < MessageBoard.messages.length; i += 1) {
+            MessageBoard.renderMessage(MessageBoard.messages[i]);
+        }
     }
 };
 
