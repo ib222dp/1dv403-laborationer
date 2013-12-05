@@ -7,7 +7,7 @@ var MessageBoard = {
 
         e = e || event;
 
-        var submit = document.querySelector("#submitbutton a");
+        var submit = document.querySelector("#submitbutton input");
         var p = document.querySelector("#value");
         var input = document.querySelector("#textarea");
 
@@ -17,7 +17,8 @@ var MessageBoard = {
         counterP.appendChild(counterText1);
 
         //Händelse-hanterare kopplad till Skicka-knappen
-        submit.addEventListener("click", function () {
+        submit.addEventListener("click", function (e) {
+            e.preventDefault();
             var message = MessageBoard.addMessage(input.value);
         }, false);
 
@@ -25,7 +26,7 @@ var MessageBoard = {
         input.onkeypress = function (e) {
             if (e.keyCode === 13 && !e.shiftKey) {
                 var message = MessageBoard.addMessage(input.value);
-            } 
+            }
         };
     },
 
