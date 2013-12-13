@@ -152,22 +152,17 @@ var Memory = {
                         var pic2 = Memory.game[1];
 
                         var timeOut = setTimeout(function () {
-                            
-                            if (pic1.src === pic2.src) {
-                                countCorrect += 1;
 
-                            } else {
-                                pic1.classList.add("hide");
-                                pic2.classList.add("hide");
-                                /*var pic1A = pic1.parentNode;
-                                var pic2A = pic2.parentNode;
-                                var qATag1 = pic1A.nextElementSibling;
-                                var qATag2 = pic2A.nextElementSibling;
-                                qATag1.classList.toggle("hide");*/
-                                qTile.classList.remove("hide");
-                            }
+                            pic1.classList.add("hide");
+                            pic2.classList.add("hide");
+                            qTile.parentNode.classList.toggle("hide");
                         }, 1000);
-                       
+
+                        if (pic1.src === pic2.src) {
+                            countCorrect += 1;
+                            clearTimeout(timeOut);
+                        }
+
                         for (q = 0; q < Memory.game.length; q += 1) {
                             Memory.game.shift();
                         }
