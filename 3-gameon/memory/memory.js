@@ -142,24 +142,36 @@ var Memory = {
             var qMarkHandler = function (e) {
                 var q;
 
+                var qArray = [];
+
                 if (Memory.game.length < 2) {
                     var qTile = e.target;
                     var picture = Memory.turnTiles(qTile);
                     Memory.game.push(picture);
 
+
                     if (Memory.game.length === 2) {
                         var pic1 = Memory.game[0];
                         var pic2 = Memory.game[1];
+                        var pic1A = pic1.parentNode;
+                        var pic2A = pic2.parentNode;
+                        var qATag1 = pic1A.nextElementSibling;
+                        var qATag2 = pic2A.nextElementSibling;
 
                         var timeOut = setTimeout(function () {
 
                             pic1.classList.add("hide");
                             pic2.classList.add("hide");
-                            qTile.parentNode.classList.toggle("hide");
+
+                            qATag1.classList.remove("hide");
+                            qATag2.classList.remove("hide");
+
                         }, 1000);
 
                         if (pic1.src === pic2.src) {
                             countCorrect += 1;
+                            pic1.parentNode.href = null;
+                            pic2.parentNode.href = null;
                             clearTimeout(timeOut);
                         }
 
