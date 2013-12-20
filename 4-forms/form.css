@@ -1,0 +1,197 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+{
+    display: block;
+}
+body
+{
+    line-height: 1;
+}
+ol, ul
+{
+    list-style: none;
+}
+blockquote, q
+{
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after
+{
+    content: '';
+    content: none;
+}
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*CSS RESET END________________________________________________________________________________________*/
+/*All*/
+*
+{
+    font-family: "Georgia" , serif;
+    line-height: 120%;
+    text-align: justify;
+}
+/*Body*/
+body
+{
+    background-color: gray;
+    position: absolute;
+    z-index: -100;
+}
+/*Container*/
+#container
+{
+    background-color: #C861D3;
+    width: 1200px;
+    margin: 10px 10px 10px 10px;
+    border: 2px solid;
+}
+/*http://css-tricks.com/css-transparency-settings-for-all-broswers/ */
+.transparent
+{
+    zoom: 1;
+    filter: alpha(opacity=25);
+    opacity: 0.2;
+}
+/*Header*/
+#header, header
+{
+    height: 90px;
+    margin-bottom: 10px;
+    padding-bottom: 40px;
+    background-color: #9702A7;
+}
+#header h1, header h1
+{
+    width: 400px;
+    margin-left: 133px;
+    padding-top: 50px;
+    padding-left: 20px;
+    background-color: #9702A7;
+    color: Silver;
+    font-size: 200%;
+    font-weight: bold;
+}
+/*Content*/
+#content
+{
+    width: 750px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border: 1px solid;
+}
+#content p
+{
+    font-weight: normal;
+    padding: 0px;
+}
+/*Form*/
+#form
+{
+    width: 700px;
+    overflow: auto;
+}
+#form label
+{
+    width: 100px;
+    text-align: right;
+    display: block;
+    float: left;
+    padding-right: 10px;
+    clear: left;
+}
+#form .textbox, #form .select
+{
+    width: 300px;
+    margin-bottom: 20px;
+    border: 1px inset;
+    background-color: #FFFFFF;
+}
+#form .textbox:focus , #form .select:focus
+{
+    border: 2px solid green;
+}
+#form .buybutton
+{
+    font-weight: bold;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 310px;
+    width: 100px;
+    text-align: center;
+}
+#form .buybutton:hover
+{
+    background-color: #C861D3;
+}
+#errmsg, #errmsg2, #errmsgzip, #errmsgemail
+{
+    float: right;
+    width: 250px;
+    color: Red;
+}
+#form .hide
+{
+    display: none;
+}
+#form .red
+{
+    border: 2px solid red;
+}
+/*Popup*/
+#popup
+{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 100;
+    background-color: yellow;
+    border: 2px solid black;
+    padding: 10px;
+    width: 400px;
+    height: 400px;
+    margin: 50px auto;
+}
+#popup h1
+{
+    font-weight: bold;
+    padding: 10px 5px 10px 5px;
+    font-size: large;
+}
+#popup .label
+{
+    font-weight: bold;
+}
+#popup .value, #popup .label
+{
+    padding: 5px;
+}
+#popup input
+{
+    padding: 5px;
+    margin: 30px;
+    font-weight: bold;
+}
+#popup input:hover
+{
+    background-color: Purple;
+}
