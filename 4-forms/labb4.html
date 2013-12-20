@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <title>Labb4</title>
+    <link rel="Stylesheet" media="screen and (min-width:481px)" type="text/css" href="../css/form.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width:device-width, initial scale=1.0, user scalable=false" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>
+                Fyll i din betalningsplan</h1>
+        </div>
+        <div id="content">
+            <div id="form">
+                <form id="myForm" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php"
+                method="post">
+                <label for="firstname" id="fname">
+                    Förnamn:</label>
+                <input class="textbox" type="text" id="firstname" name="firstname" />
+                <div id="errmsg" class="hide">
+                    <p>
+                        Detta fält får inte lämnas blankt.</p>
+                </div>
+                <br />
+                <label for="surname" id="sname">
+                    Efternamn:</label>
+                <input class="textbox" type="text" id="surname" name="surname" />
+                <div id="errmsg2" class="hide">
+                    <p>
+                        Detta fält får inte lämnas blankt.</p>
+                </div>
+                <br />
+                <label for="zipcode" id="zip">
+                    Postnummer:</label>
+                <input class="textbox" type="text" id="zipcode" name="zipcode" />
+                <div id="errmsgzip" class="hide">
+                    <p>
+                        Ange postnummer i formatet "12345".</p>
+                </div>
+                <br />
+                <label for="email" id="mail">
+                    E-post:</label>
+                <input class="textbox" type="text" id="email" name="email" />
+                <div id="errmsgemail" class="hide">
+                    <p>
+                        Epost-adressen är inte korrekt.</p>
+                </div>
+                <br />
+                <label for="pricemodel" id="price">
+                    Prismodell:</label>
+                <select class="select" id="pricemodel" name="pricemodel">
+                    <option value="low">Låg</option>
+                    <option value="medium">Mellan</option>
+                    <option value="high">Hög</option>
+                </select>
+                <button id="buybutton" class="buybutton" type="submit">
+                    Genomför köp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/validator.js"> </script>
+</body>
+</html>
