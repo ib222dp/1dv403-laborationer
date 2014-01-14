@@ -1,22 +1,14 @@
 "use strict";
-
 //Statiskt objekt Memory
 var Memory = {
-
     game: [],
-
     x: 4,
-
     y: 4,
-
     images: [],
-
     counter: 0,
-
     tries: 0,
 
     init: function () {
-
         //Anropar getPictureArray med argumenten antal rader (x) och antal kolumner (y) för att få en utslumpad array
         var array = RandomGenerator.getPictureArray(Memory.x, Memory.y);
 
@@ -39,34 +31,24 @@ var Memory = {
     },
 
     renderGame: function () {
-
         //Skapar och lägger till tabell i HTML-dokumentet
         var counter, rows, cols, tr, table = document.createElement("table"),
         tableDiv = document.getElementById("tableDiv").appendChild(table);
 
-        var turn = function (aTag, aTagImg) {
+
+        var turn = function (aTagImg) {
             //Lägger till bilden som klickats på i arrayen/egenskapen Memory.images
             Memory.images.push(aTagImg);
 
-            //Vänder på brickan genom att byta till den bild-url som klassen på den inkapslande länken motsvarar
-            if (Memory.images.length === 1 || Memory.images.length === 2) {
-                if (aTag.getAttribute("className") === "1") {
-                    aTagImg.setAttribute("src", "../pics/1.png");
-                } if (aTag.getAttribute("className") === "2") {
-                    aTagImg.setAttribute("src", "../pics/2.png");
-                } if (aTag.getAttribute("className") === "3") {
-                    aTagImg.setAttribute("src", "../pics/3.png");
-                } if (aTag.getAttribute("className") === "4") {
-                    aTagImg.setAttribute("src", "../pics/4.png");
-                } if (aTag.getAttribute("className") === "5") {
-                    aTagImg.setAttribute("src", "../pics/5.png");
-                } if (aTag.getAttribute("className") === "6") {
-                    aTagImg.setAttribute("src", "../pics/6.png");
-                } if (aTag.getAttribute("className") === "7") {
-                    aTagImg.setAttribute("src", "../pics/7.png");
-                } if (aTag.getAttribute("className") === "8") {
-                    aTagImg.setAttribute("src", "../pics/8.png");
-                }
+            var imgsrc = aTagImg.getAttribute("src");
+
+            //Kontrollerar att bilden man klickat på har src-attribut 0.png (frågetecknet)
+            if (Memory.images.length === 1 && imgsrc == "../pics/0.png" || Memory.images.length === 2 && imgsrc == "../pics/0.png") {
+
+                var className = aTagImg.parentNode.getAttribute("className")
+
+                //Vänder på brickan genom att byta till den bild-url som klassen på den inkapslande länken motsvarar
+                aTagImg.setAttribute("src", "../pics/" + className + ".png");
 
                 if (Memory.images.length === 2) {
                     var pic1 = Memory.images[0];
@@ -87,6 +69,8 @@ var Memory = {
                         clearTimeout(timeOut);
                         pic1.parentNode.removeAttribute("href");
                         pic2.parentNode.removeAttribute("href");
+                        pic1.parentNode.onclick = null;
+                        pic2.parentNode.onclick = null;
 
                         //Alert-ruta som kommer upp när spelet är slut
                         if (Memory.counter === (Memory.x * Memory.y / 2)) {
@@ -96,6 +80,9 @@ var Memory = {
                     //Tar bort de två elementen i images-arrayen
                     Memory.images.splice(0, 2);
                 }
+            } else {
+                //Tar bort det första elementet i images-arrayen om man har klickat två gånger på samma bild
+                Memory.images.splice(0, 1);
             }
         }
 
@@ -110,8 +97,9 @@ var Memory = {
 
             //Anropar funktionen turn med den länk och bild som klickats på
             aTag.onclick = function (e) {
-                turn(e.currentTarget, e.target);
-            }
+                turn(e.target)
+            };
+
             var tdImg = document.createElement("img");
             tdImg.setAttribute("src", "../pics/0.png");
             aTag.appendChild(tdImg);
